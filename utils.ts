@@ -19,7 +19,7 @@ export function showReviewTotal(
 }
 
 // Changes "welcome back" if the user is returning
-function populateUser(isReturning: boolean, userName: string) {
+export function populateUser(isReturning: boolean, userName: string) {
   if (isReturning) {
     returningUserDisplay.innerHTML = "back";
   }
