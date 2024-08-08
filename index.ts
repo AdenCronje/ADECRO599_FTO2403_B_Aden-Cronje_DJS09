@@ -1,13 +1,7 @@
-// Number Types mini-challenge 10 10.2
-// Write a function that will only accept numbers and attend to
-// all TypeScript weakness flags.
-// : number
-const returningUserDisplay = document.querySelector("#returning-user");
-const userNameDisplay = document.querySelector("#user");
-const reviewTotalDisplay = document.querySelector("#reviews");
-
+import { showReviewTotal, populateUser } from "./utils";
 let isOpen: boolean;
 
+// Reviews
 const reviews: {
   name: string;
   stars: number;
@@ -34,20 +28,7 @@ const reviews: {
   },
 ];
 
-// Showing different keys in array
-function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
-  const iconDisplay = isLoyalty ? "⭐" : "";
-  reviewTotalDisplay.innerHTML =
-    "review total " +
-    value.toString() +
-    "| last reviewed by " +
-    reviewer +
-    " " +
-    iconDisplay;
-}
-
-showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
-
+// User
 const you: {
   firstName: string;
   lastName: string;
@@ -62,14 +43,24 @@ const you: {
   stayedAt: ["florida-home", "oman-flat", "tokyo-bungalow"],
 };
 
-console.log(you.userName);
+//Properties
+const properties: {
+  image: string;
+  title: string;
+  price: number;
+  location: {
+    firstLine: string;
+    city: string;
+    code: number;
+    country: string;
+  };
+  contact: string;
+  isAvailable: boolean;
+}[] = [{
 
-// Changes "welcome back" if the user is returning
-function populateUser(isReturning: boolean, userName: string) {
-  if (isReturning) {
-    returningUserDisplay.innerHTML = "back";
-  }
-  userNameDisplay.innerHTML = userName;
-}
+}];
 
-populateUser(you.isReturning, you.userName);
+// Functions
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
+
+populateUser(you.isReturning, you.firstName);
