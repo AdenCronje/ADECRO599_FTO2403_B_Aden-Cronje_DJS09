@@ -1,4 +1,4 @@
-import { showReviewTotal, populateUser } from "./utils";
+import { showReviewTotal, populateUser, getTopTwoReviews } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
 import { Price, Country } from "./types";
 import Review from "./interfaces";
@@ -26,7 +26,6 @@ const reviews: Review[] = [
     stars: 4,
     loyaltyUser: LoyaltyUser.SILVER_USER,
     date: "27-03-2021",
-    description: "Great hosts, location was a bit further than said.",
   },
 ];
 
@@ -39,22 +38,24 @@ const you = {
   stayedAt: ["florida-home", "oman-flat", "tokyo-bungalow"],
 };
 
-// Array of Properties
-const properties: {
+interface Property {
   image: string;
   title: string;
-  price: number;
+  price: Price;
   location: {
     firstLine: string;
     city: string;
-    code: number;
-    country: string;
+    code: number | string;
+    country: Country;
   };
   contact: [number, string];
   isAvailable: boolean;
-}[] = [
+}
+
+// Array of Properties
+const properties: Property[] = [
   {
-    image: "images/colombia-property.jpg",
+    image: "./images/colombia-property.jpg",
     title: "Colombian Shack",
     price: 45,
     location: {
@@ -67,7 +68,7 @@ const properties: {
     isAvailable: true,
   },
   {
-    image: "images/poland-property.jpg",
+    image: "./images/poland-property.jpg",
     title: "Polish Cottage",
     price: 30,
     location: {
@@ -80,16 +81,29 @@ const properties: {
     isAvailable: false,
   },
   {
-    image: "images/london-property.jpg",
+    image: "./images/london-property.jpg",
     title: "London Flat",
     price: 25,
     location: {
       firstLine: "flat 15",
       city: "London",
-      code: 35433,
+      code: "SW4 5XW",
       country: "United Kingdom",
     },
     contact: [+34829374892553, "andyluger@aol.com"],
+    isAvailable: true,
+  },
+  {
+    image: "./images/colombia-property.jpg",
+    title: "Malia Hotel",
+    price: 35,
+    location: {
+      firstLine: "Room 4",
+      city: "Malia",
+      code: 45334,
+      country: "Malaysia",
+    },
+    contact: [+112343823978921, "marywinkle@gmail.com"],
     isAvailable: true,
   },
 ];
@@ -142,3 +156,9 @@ footer.innerHTML =
   " " +
   currentLocation[2] +
   "°";
+
+// Displaying main image before reviews
+const mainImageContainer = document.querySelector(".main-image");
+const image = document.createElement("img");
+image.setAttribute("src", yourMainProperty.src);
+mainImageContainer.appendChild(image);
