@@ -1,13 +1,14 @@
 import { showReviewTotal, populateUser } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
 import { Price, Country } from "./types";
+import Review from "./interfaces";
 const propertyContainer = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
 
 let isOpen: boolean;
 
 // Reviews
-const reviews: any[] = [
+const reviews: Review[] = [
   {
     name: "Sheia",
     stars: 5,
@@ -109,7 +110,7 @@ for (let i = 0; i < properties.length; i++) {
   propertyContainer.appendChild(card);
 }
 
-// Displaying reviews card on page 
+// Displaying reviews card on page
 let count = 0;
 function addReviews(
   array: {
