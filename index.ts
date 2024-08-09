@@ -1,5 +1,6 @@
 import { showReviewTotal, populateUser } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
+import { Price, Country } from "./types";
 const propertyContainer = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
 
@@ -37,14 +38,7 @@ const you = {
   stayedAt: ["florida-home", "oman-flat", "tokyo-bungalow"],
 };
 
-const you = {
-  firstName: "Bobby",
-  lastName: "Brown",
-  permissions: Permissions.ADMIN,
-  isReturning: true,
-  age: 35,
-  stayedAt: ["florida-home", "oman-flat", "tokyo-bungalow"],
-};
+
 
 // Array of Properties
 const properties: {
@@ -76,7 +70,7 @@ const properties: {
   {
     image: "images/poland-property.jpg",
     title: "Polish Cottage",
-    price: 34,
+    price: 30,
     location: {
       firstLine: "no 23",
       city: "Gdansk",
@@ -89,7 +83,7 @@ const properties: {
   {
     image: "images/london-property.jpg",
     title: "London Flat",
-    price: 23,
+    price: 25,
     location: {
       firstLine: "flat 15",
       city: "London",
